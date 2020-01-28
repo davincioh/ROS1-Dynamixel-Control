@@ -42,7 +42,7 @@ $ rosrun dynamixel_workbench_controllers find_dynamixel /dev/ttyACM0
 
 프로그램을 실행하게되면 "catkin_ws/src" 디렉토리에 위치한 "dynamixel-workbench 폴더(패키지)"의 "find_dynamixel" 프로그램(서비스)가 실행됩니다. 
 
-![run](./images/img03.jpeg)
+![run](./images/img03.png)
 
 
 프로그램이 실행이되면 터미널 창에 다음과 같은 메세지가 보입니다. 저는 XM430-W350 2개가 연결되어 있으며 각각 ID1, ID2로 할당되어 있습니다.
@@ -71,12 +71,10 @@ Controllsers  프로그램(패키지)을 이용하여 모터를 원하는 각도
 
 먼저, 다이나믹셀을 움직여보기 전, 가지고 있는 다이나믹셀과 연결을 위해 port명과 앞서 find_dynamixel을 통해 알게된 baudrate를 작성(수정)합니다.
 
-- 01 dynamixel_controllers.launch 파일 수정
+- 01 dynamixel_controllers.launch 파일 수정, 파일이 수정되면 catkin_make를 새로이 해주어 프로그램의 실행파일을 최신상태로 유지합니다.
 ![edit](./images/img05.png)
-
-
-- 02 파일이 수정되면 catkin_make를 새로이 해주어 프로그램의 실행파일을 최신상태로 유지합니다.
-- 03 메이크
+ 
+- 02 메이크
 ```
 $ cd ~/catkin_ws && catkin_make
 ```
@@ -125,7 +123,14 @@ dynamixel_controllers.launch 파일을 실행합니다.
 roslaunch는 port와 baudrate 셋팅값과 같은 각 '태그' 의 값을 참조하여 프로그램을 실행합니다.
   
 - 01 controller를 실행합니다.
+```
+$ roslaunch dynamixel_workbench_controllers dynamixel_controllers.launch
+```
 - 01-1 다음과 같은 결과를 확인하실 수 있습니다.
+```
+[ INFO] [1544595828.276238724]: Name : pan, ID : 1, Model Number : 1020
+[ INFO] [1544595828.316198852]: Name : tilt, ID : 2, Model Number : 1020
+```
 
 
 모터를 회전시켜보자, 위치제어
@@ -141,10 +146,7 @@ $ rqt
 ![caller](./images/img06.png)
 
 
-Expression 에 상기 이미지와 같이 값을 넣어줍니다.
-
-"ID 1번 모터를 2048위치로 이동시킨다."
-
+Expression 에 상기 이미지와 같이 값을 넣어줍니다. "ID 1번 모터를 2048위치로 이동시킨다."
 call 버튼을 누르면 모터가 움직이게 됩니다. value값을 변경하면 변경 값에 따라 모터가 움직이게 됩니다.
 
 
