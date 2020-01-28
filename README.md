@@ -15,21 +15,15 @@ ROS를 활용하여 다이나믹셀을 제어해보는 실습을 해보겠습니
 다이나믹셀 워크벤치는 로보티즈에서 생산하고 판매하는 다이나믹셀(서보모터)를 쉽게 제어하고 프로그래밍을 도와주는 라이브러리입니다.
 이 라이브러리는 다이나믹셀SDK를 기반으로 개발되었으며 ROS에서 활용가능한 패키지도 제공하고 있습니다. 
 
-- 내 PC에 워크벤치 패키지를 다운로드하고 설치(빌드)합니다.
+- 01 내 PC에 워크벤치 패키지를 다운로드하고 설치(빌드)합니다.
 ```
 $ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench.git
-```
-```
 $ git clone https://github.com/ROBOTIS-GIT/dynamixel-workbench-msgs.git
-```
-```
 $ git clone https://github.com/ROBOTIS-GIT/DynamixelSDK.git
-```
-```
 $ cd ~/catkin_ws && catkin_make
 ```
 
-- 다운로드한 패키지를 catkin_ws/src 폴더에 넣어줍니다.
+- 02 다운로드한 패키지를 catkin_ws/src 폴더에 넣어줍니다.
 
 
 
@@ -54,9 +48,9 @@ Controllsers  프로그램(패키지)을 이용하여 모터를 원하는 각도
 
 먼저, 다이나믹셀을 움직여보기 전, 가지고 있는 다이나믹셀과 연결을 위해 port명과 앞서 find_dynamixel을 통해 알게된 baudrate를 작성(수정)합니다.
 
-- dynamixel_controllers.launch 파일 수정
-- 파일이 수정되면 catkin_make를 새로이 해주어 프로그램의 실행파일을 최신상태로 유지합니다.
-- 메이크
+- 01 dynamixel_controllers.launch 파일 수정
+- 02 파일이 수정되면 catkin_make를 새로이 해주어 프로그램의 실행파일을 최신상태로 유지합니다.
+- 03 메이크
 ```
 $ cd ~/catkin_ws && catkin_make
 ```
@@ -117,7 +111,7 @@ Controllers를 실행하면 모터가 움직이기위한 준비가 완료되었�
 $ rqt
 ```
 
--02 Open rqt and Plugins -> Services -> Service Caller
+- 02 Open rqt and Plugins -> Services -> Service Caller
 
 Expression 에 상기 이미지와 같이 값을 넣어줍니다.
 
