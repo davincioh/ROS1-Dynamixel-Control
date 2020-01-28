@@ -2,12 +2,14 @@
 다이나믹셀은 모터, 제어기, 드라이버, 센서, 감속기 및 네트워크 기능을 하나의 모듈로 만든 로봇 전용 스마트 액추에이터입니다.
 ROS를 활용하여 다이나믹셀을 제어해보는 실습을 해보겠습니다.
 
+![overview](./images/img01.jpeg)
+
 준비물
 --
 
 - 하드웨어 : PC, Dynamixel, OpenCR
 - 소프트웨어 : OS_Ubuntu 16.04, ROS Kinetic Kame
-- ROS패키지 : Dynamixel-Workbench 
+- ROS패키지 : [다이나믹셀 워크벤치 datasheets](http://emanual.robotis.com/docs/en/software/dynamixel/dynamixel_workbench/)
 
 
 다이나믹셀 워크벤치 패키지 이용하기
@@ -24,6 +26,8 @@ $ cd ~/catkin_ws && catkin_make
 ```
 
 - 02 다운로드한 패키지를 catkin_ws/src 폴더에 넣어줍니다.
+![package](./images/img02.png)
+
 
 
 
@@ -38,7 +42,23 @@ $ rosrun dynamixel_workbench_controllers find_dynamixel /dev/ttyACM0
 
 프로그램을 실행하게되면 "catkin_ws/src" 디렉토리에 위치한 "dynamixel-workbench 폴더(패키지)"의 "find_dynamixel" 프로그램(서비스)가 실행됩니다. 
 
+![run](./images/img03.jpeg)
+
+
 프로그램이 실행이되면 터미널 창에 다음과 같은 메세지가 보입니다. 저는 XM430-W350 2개가 연결되어 있으며 각각 ID1, ID2로 할당되어 있습니다.
+
+
+```
+[ INFO] [1544589715.841211668]: Succeed to init(115200)
+[ INFO] [1544589715.841236741]: Wait for scanning...
+[ INFO] [1544589737.539083688]: Find 0 Dynamixels
+[ INFO] [1544589737.539526809]: Succeed to init(1000000)
+[ INFO] [1544589737.539570059]: Wait for scanning...
+[ INFO] [1544589755.441019922]: Find 2 Dynamixels
+[ INFO] [1544589755.441086482]: id : 1, model name : XM430-W350
+[ INFO] [1544589755.441109032]: id : 2, model name : XM430-W350
+```
+
 
 
 다이나믹셀을 움직이기 위해서 필요한 것들
@@ -46,9 +66,15 @@ $ rosrun dynamixel_workbench_controllers find_dynamixel /dev/ttyACM0
 다운로드한 다이나믹셀워크벤치의 구성은 다음과 같습니다.다이나믹셀을 움직이기 위해서는 워크벤치의 "dynamixel_controllers 프로그램(패키지)"를 이용합니다.
 Controllsers  프로그램(패키지)을 이용하여 모터를 원하는 각도로 움직일 수 있습니다.
 
+![run](./images/img04.jpeg)
+
+
 먼저, 다이나믹셀을 움직여보기 전, 가지고 있는 다이나믹셀과 연결을 위해 port명과 앞서 find_dynamixel을 통해 알게된 baudrate를 작성(수정)합니다.
 
 - 01 dynamixel_controllers.launch 파일 수정
+![edit](./images/img05.png)
+
+
 - 02 파일이 수정되면 catkin_make를 새로이 해주어 프로그램의 실행파일을 최신상태로 유지합니다.
 - 03 메이크
 ```
@@ -112,6 +138,8 @@ $ rqt
 ```
 
 - 02 Open rqt and Plugins -> Services -> Service Caller
+![caller](./images/img06.png)
+
 
 Expression 에 상기 이미지와 같이 값을 넣어줍니다.
 
